@@ -43,16 +43,20 @@ class SassCompiler
 
         // step through all .scss files in that folder
         foreach ($filelist as $file_path) {
-            // get path elements from that file
-            $file_path_elements = pathinfo($file_path);
-            // get file's name without extension
-            $file_name = $file_path_elements['filename'];
-            // get .scss's content, put it into $string_sass
-            $string_sass = file_get_contents($scss_folder . $file_name . ".scss");
-            // compile this SASS code to CSS
-            $string_css = $scss_compiler->compile($string_sass);
-            // write CSS into file with the same filename, but .css extension
-            file_put_contents($css_folder . $file_name . ".css", $string_css);
+            try{
+                // get path elements from that file
+                $file_path_elements = pathinfo($file_path);
+                // get file's name without extension
+                $file_name = $file_path_elements['filename'];
+                // get .scss's content, put it into $string_sass
+                $string_sass = file_get_contents($scss_folder . $file_name . ".scss");
+                // compile this SASS code to CSS
+                $string_css = $scss_compiler->compile($string_sass);
+                // write CSS into file with the same filename, but .css extension
+                file_put_contents($css_folder . $file_name . ".css", $string_css);
+            } catch (Exception $e) {
+                die('Exception caught: ', $e->getMessage());
+            }
         }
 
     }

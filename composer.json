@@ -1,6 +1,7 @@
 {
-    "name": "panique/laravel-sass",
+    "name": "wolfwind/laravel-sass",
     "type": "library",
+    "version": "1.0.1",
     "description": "Compiles your SASS .scss files to .css every time your run your app (in development)",
     "keywords": ["sass", "scss", "css"],
     "homepage": "https://github.com/panique/laravel-sass",
